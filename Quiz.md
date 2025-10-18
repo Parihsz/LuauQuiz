@@ -118,7 +118,7 @@ How much memory does a table and function take in bytes?
 
 ### Question 3
 
-What is the output of this? Explain
+What is the output of this? Explain.
 ```lua
 local x = table.create(100)
 x[100] = 1
