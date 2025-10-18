@@ -27,7 +27,7 @@ Which one has the smallest size?
 
 ### Question 1
 
-Explain the behavior of __eq in this snippet, what it prints, and also why the output in Lua is different from the output in Luau.
+Explain the behavior of __eq in this snippet, what it prints, and also why the output in Lua is different from the output in Luau in certain cases.
 ```lua
 local callCount = 0
 
