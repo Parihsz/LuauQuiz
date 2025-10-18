@@ -6,7 +6,7 @@
 Is ``continue`` syntax sugar in Luau or does it have an opcode?
 
 ### Question 2
-Assuming ``n`` is a constant, what is the performance difference in the snippets ``4 * n`` and ``n * 4``? Explain why.
+Assuming ``n`` is not a constant, what is the performance difference in the snippets ``4 * n`` and ``n * 4``? Explain why.
 
 ### Question 3
 Explain the size difference of these types
