@@ -101,13 +101,13 @@ What would the difference in the output of these 2 snippets be?
 local _, mul = getFn(function()
     return CFrame.new(1,1,1) * nil
 end)
-print(mul(CFrame.new(1,1,1),CFrame.new(1,1,1)).Position)
+print(mul(CFrame.new(1,1,1), CFrame.new(1,1,1)).Position)
 ```
 ```lua
 local _, add = getFn(function()
     return Vector3.new(1,1,1) + nil
 end)
-print(add(Vector3.new(1,1,1),Vector3.new(1,1,1)))
+print(add(Vector3.new(1,1,1), Vector3.new(1,1,1)))
 ```
 
 ## Section 3 (Advanced)
