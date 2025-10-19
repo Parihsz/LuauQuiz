@@ -21,7 +21,7 @@ Which one has the smallest size?
 
 * ``Vector3``
 * ``Vector2``
-* ``Vector2int64``
+* ``Vector2int16``
 
 ## Section 2 (Intermediate)
 
