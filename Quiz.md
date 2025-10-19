@@ -1,5 +1,7 @@
 # Luau Quiz
 
+* All snippets should be ran in o2 for consistent results.
+
 ## Section 1 (Beginner)
 
 ### Question 1
