@@ -29,13 +29,13 @@ Which one has the smallest size?
 What is the maximum amount of entries in a table?
 
 ### Question 6
-What is the output of the following snippet?
+What is the output of the following snippet? Explain.
 ```lua
 loadstring(`print( 0b{string.rep("1",300)} == 0b{string.rep("11",300)} )`)()
 ```
 
 ### Question 7
-What is this going to print?
+What is this going to print? Explain.
 ```lua
 print(2^53+1==2^53)
 print(2^53+3==2^53)
@@ -43,7 +43,7 @@ print(2^56+3==2^56)
 ```
 
 ### Question 8
-What does this print?
+What does this print? Explain.
 ```lua
 print(#'\11\0')
 ```
