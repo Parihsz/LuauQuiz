@@ -133,6 +133,25 @@ end)
 print(add(Vector3.new(1,1,1), Vector3.new(1,1,1)))
 ```
 
+### Question 5
+
+What do these print? Explain.
+```lua
+local t = {1,2,nil,4,5}
+
+for i in t, 3 do
+    print(i)
+end
+```
+
+```lua
+local t = {1,2,nil,4,5}
+
+for i,v in ipairs(t), t, 2 do
+    print(i,v)
+end
+```
+
 ## Section 3 (Advanced)
 
 ### Question 1
