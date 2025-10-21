@@ -25,6 +25,29 @@ Which one has the smallest size?
 * ``Vector2``
 * ``Vector2int16``
 
+### Question 5
+What is the maximum amount of entries in a table?
+
+### Question 6
+What is the output of the following snippet?
+```lua
+loadstring(`print( 0b{string.rep("1",300)} == 0b{string.rep("11",300)} )`)()
+```
+
+### Question 7
+What is this going to print?
+```lua
+print(2^53+1==2^53)
+print(2^53+3==2^53)
+print(2^56+3==2^56)
+```
+
+### Question 8
+What does this print?
+```lua
+print(#'\11\0')
+```
+
 ## Section 2 (Intermediate)
 
 ### Question 1
@@ -150,13 +173,51 @@ end
 print(a + b())
 ```
 
+### Question 5
+What is the output of the following snippet?
+```lua
+print(table.unpack({1,2,3,nil,5}))
+print(table.unpack({1,2,3,nil,5,nil}))
+print(table.unpack({1,2,3,nil,5,nil}, -2, 7))
+```
 ## Section 4 (Expert)
 
 ### Question 1
-What is a downvalue?
+What would these print? Explain.
+```lua
+local inext = ipairs{}
+print(next({1,2,nil}, 2))
+print(next({1,2,nil,4}, 2))
+print(inext({1,2,nil,4}, 2))
+```
 
 ### Question 2
-How do you implement the 0 bandwidth method?
+What would this print? Explain.
+```lua
+local count = 0
+local printingThread = coroutine.create(print)
 
-### Question 3
-How do you overcome "skidding" and become immune to ever getting skid checked.
+local yieldedThreads = {}
+local function yield()
+    table.insert(yieldedThreads, coroutine.running())
+    return coroutine.yield()
+end
+
+local done = 0
+
+for i = 1, 100 do
+    coroutine.wrap(function()
+        count += yield() and 1 or 0
+        done += 1
+    end)()
+end
+
+for _, thread in yieldedThreads do
+    coroutine.resume(thread, true)
+    if done == 50 then
+        coroutine.resume(printingThread, count)
+        break
+    end
+end
+```
+
