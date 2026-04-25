@@ -1,3 +1,5 @@
+For verifying the solutions you can visit `https://play.luau.org/` to test the code snippets.
+
 # Section 1
 
 <details>
@@ -53,7 +55,14 @@
 <details>
   <summary>Q8</summary>
 
- 2 because Luau does not use null-terminated strings and `\11` and `\0` are just ASCII characters.
+ The first print prints 2 because Luau does not use null-terminated strings and `\11` and `\0` are just ASCII characters.
+ The second print prints 5 because [[]] aka long strings do not process the text and leaves them as raw.
+
+</details>
+
+<details>
+  <summary>Q9</summary>
+  No, Luau already optimizes local variables that are never reassigned as if they were const. All const does is do a compile time check.
 </details>
 
 # Section 2
@@ -61,25 +70,27 @@
 <details>
   <summary>Q1</summary>
 
-  `false 0` because the function is not the same. `DUPCLOSURE` would not be present due to upvalues being mutated.
+  `false 0` because the function is not the same. `DUPCLOSURE` would not be present due to upvalues being mutated. For `__eq` to work, the function has to be the same. While in lua the function could be different. 
+   
 </details>
 
 <details>
   <summary>Q2</summary>
 
-  10, Luau uses a binary search for table length. Read https://github.com/Meifeng1510/LuauDocs/blob/main/Table/Guide/LuauTableLengthInDepth.md
+  `true` because of `DUPCLOSURE`, where luau will reuse the same closure for the function since there are no upvalues. In lua, this would print `false` because it does not have `DUPCLOSURE` and creates a new closure every time.
+   
 </details>
 
 <details>
   <summary>Q3</summary>
 
-  Make sure you are in --!optimize 2 when testing this. The first one will print 3 for the `#testTable` while the second one will print 0. This is because Luau is smart enough to preallocate the table due to the for loop.
+  10, Luau uses a binary search for table length. Read https://github.com/Meifeng1510/LuauDocs/blob/main/Table/Guide/LuauTableLengthInDepth.md
 </details>
 
 <details>
   <summary>Q4</summary>
 
-  The `getFn` returns the `__mul` metamethod for cframe which would just be `print((CFrame.new(1,1,1) * CFrame.new(1,1,1)).Position)`, printing `2,2,2`. However, for the Vector3 one it would not be `__add` as Vector3 is a primative type and would just do normal addition like adding two numbers.
+  Make sure you are in --!optimize 2 when testing this. The first one will print 3 for the `#testTable` while the second one will print 0. This is because Luau is smart enough to preallocate the table due to the for loop.
 </details>
 
 <details>

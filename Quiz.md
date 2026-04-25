@@ -2,13 +2,13 @@
 
 * All snippets should be ran in o2 for consistent results.
 
-## Section 1 (Beginner)
+## Section 1 
 
 ### Question 1
 Is ``continue`` syntax sugar in Luau or does it have an opcode?
 
 ### Question 2
-Assuming ``n`` is not a constant, what is the performance difference in the snippets ``4 * n`` and ``n * 4``? Explain why.
+Assuming ``n`` is not a constant or have a type annotation, what is the performance difference in the snippets ``4 * n`` and ``n * 4``? Explain why.
 
 ### Question 3
 Explain the size difference of these types
@@ -19,7 +19,7 @@ Explain the size difference of these types
 * ``Vector3``
 
 ### Question 4
-Which one has the smallest size?
+Which datatype has the smallest size?
 
 * ``Vector3``
 * ``Vector2``
@@ -46,9 +46,14 @@ print(2^56+3==2^56)
 What does this print? Explain.
 ```lua
 print(#'\11\0')
+print(#[[\11\0]])
 ```
 
-## Section 2 (Intermediate)
+### Question 9
+
+Are there any performance differences when using const over local for variables that are never reassigned? 
+
+## Section 2 
 
 ### Question 1
 
@@ -66,6 +71,20 @@ print(example() == example(), callCount)
 ```
 
 ### Question 2
+
+What is the output of this snippet?  
+
+```lua
+local function example()
+    return function(x)
+        return x + 1
+    end
+end
+print(example() == example())
+```
+
+
+### Question 3
 What is the output of the following snippet? How do you calculate the length of any table in luau?
 ```lua
 local tbl = {
@@ -82,7 +101,7 @@ local tbl = {
 print(#tbl)
 ```
 
-### Question 3
+### Question 4
 
 What is the difference in the outputs of these 2 snippets? Explain why they have different behavior.
 ```lua
@@ -107,32 +126,6 @@ for i = 1, 3 do
 end
 ```
 
-### Question 4
-Given this function ``getFn``,
-
-```lua
-function getFn(expr)
-    return xpcall(expr, function()
-        return debug.info(2, "f")
-    end)
-end
-```
-
-What would the difference in the output of these 2 snippets be?
-
-```lua
-local _, mul = getFn(function()
-    return CFrame.new(1,1,1) * nil
-end)
-print(mul(CFrame.new(1,1,1), CFrame.new(1,1,1)).Position)
-```
-```lua
-local _, add = getFn(function()
-    return Vector3.new(1,1,1) + nil
-end)
-print(add(Vector3.new(1,1,1), Vector3.new(1,1,1)))
-```
-
 ### Question 5
 
 What do these print? Explain.
@@ -152,7 +145,7 @@ for i,v in ipairs(t), t, 2 do
 end
 ```
 
-## Section 3 (Advanced)
+## Section 3 
 
 ### Question 1
 What are the flaws with Luau's modulo operator? How can this flaw be corrected.
